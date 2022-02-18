@@ -1,4 +1,4 @@
-package com.example.contactsapp
+package com.example.contactsapp.Services
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

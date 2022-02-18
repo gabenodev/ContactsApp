@@ -1,4 +1,4 @@
-package com.example.contactsapp
+package com.example.contactsapp.Model
 
 data class User (
     val id: Int? = null,
