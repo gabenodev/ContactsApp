@@ -4,20 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_marginTop="@dimen/_10sdp">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_75sdp"
+    android:orientation="horizontal">
+
 
     <ImageView
         android:id="@+id/profileIcon"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_gravity="center"
-        android:background="@drawable/profile_icon">
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!-- android:background="@drawable/initials_bg" -->
 
     </ImageView>
-
-
 
     <TextView
         android:id="@+id/tvName"
@@ -27,11 +35,50 @@
         android:text="@string/user_name"
         android:textColor="@color/white"
         android:textSize="@dimen/_16sdp"
-        android:layout_marginLeft="@dimen/_50sdp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/firstInitial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileIcon"
+        app:layout_constraintEnd_toEndOf="@+id/profileIcon"
+        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintStart_toStartOf="@+id/profileIcon"
+        app:layout_constraintTop_toTopOf="@+id/profileIcon"
+        app:layout_constraintVertical_bias="0.555">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/secondInitial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileIcon"
+        app:layout_constraintEnd_toEndOf="@+id/profileIcon"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="@+id/profileIcon"
+        app:layout_constraintTop_toTopOf="@+id/profileIcon"
+        app:layout_constraintVertical_bias="0.555">
 
     </TextView>
 
 
+</androidx.constraintlayout.widget.ConstraintLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/white"/>
     <!-- Global Constraint layout -->
 </LinearLayout>
+
