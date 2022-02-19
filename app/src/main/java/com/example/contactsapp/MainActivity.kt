@@ -2,6 +2,9 @@ package com.example.contactsapp
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -50,12 +53,20 @@ class MainActivity : AppCompatActivity() {
                         recyclerView.apply {
 
                             layoutManager = manager
-                            myAdapter = UserAdapter(userListActive)
+                           myAdapter = UserAdapter(userListActive)
                            //Log.e("MESSAGE2" ,"UserAdapter has... items "+  UserAdapter(userListActive).itemCount )
                             adapter = myAdapter
 
+                    }
+
+                myAdapter.setOnItemClickListener(object : UserAdapter.onItemClickListener{
+                    override fun onItemClick(index: Int) {
+
+                        Toast.makeText(this@MainActivity,"You clicked the user with the index $index " , Toast.LENGTH_LONG).show()
 
                     }
+
+                })
 
                 }
             }
@@ -68,6 +79,8 @@ class MainActivity : AppCompatActivity() {
         })
 
 
+
+
     }
 
     fun deleteItem(index: Int){
@@ -75,5 +88,6 @@ class MainActivity : AppCompatActivity() {
             userList.removeAt(index)
             myAdapter.setItems(userList)
     }
+
 
 }

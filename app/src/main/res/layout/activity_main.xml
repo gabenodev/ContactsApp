@@ -23,7 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/card_corner"
+        android:clickable="true"
         android:layout_marginTop="@dimen/_30sdp"
-        tools:listitem="@layout/item_contact" />
+        tools:listitem="@layout/item_contact"
+        android:focusable="true" />
 
 </LinearLayout>
