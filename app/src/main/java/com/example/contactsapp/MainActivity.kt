@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         val call = serviceGenerator.getUser()
         manager = LinearLayoutManager(this)
         val recyclerView = findViewById<RecyclerView>(R.id.contactsRV)
+        val userListActive = mutableListOf<User>()
 
         // Getting response from the API
         call.enqueue(object:Callback<MutableList<User>>{
@@ -37,12 +38,23 @@ class MainActivity : AppCompatActivity() {
                 response: Response<MutableList<User>>
             ) {
                 if(response.isSuccessful){
-                    recyclerView.apply{
-                            userList = response.body() as MutableList<User>
-                           layoutManager = manager
-                            myAdapter = UserAdapter(userList){index -> deleteItem(index)}
-                            adapter=myAdapter
-                           myAdapter.notifyDataSetChanged()
+                    userList = response.body() as MutableList<User>
+                    //Log.e("MESSAGE", "THE LAST PERSON IN API IS... " + userList.get(userList.size-1).toString() )
+
+                    for(i in 0 until userList.size){
+                        if(userList.get(i).status.equals("active")) {
+                            userListActive.add(userList.get(i))
+                        }
+                    }
+                    Log.e("MESSAGE", "THE LAST PERSON ACTIVE IN API IS... " + userListActive.get(userListActive.size-1).toString())
+                        recyclerView.apply {
+
+                            layoutManager = manager
+                            myAdapter = UserAdapter(userListActive)
+                           //Log.e("MESSAGE2" ,"UserAdapter has... items "+  UserAdapter(userListActive).itemCount )
+                            adapter = myAdapter
+
+
                     }
 
                 }
