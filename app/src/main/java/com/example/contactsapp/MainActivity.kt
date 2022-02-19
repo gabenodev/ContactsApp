@@ -1,8 +1,8 @@
 package com.example.contactsapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contactsapp.Adapter.UserAdapter
@@ -15,13 +15,19 @@ import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
+
+     lateinit var userList: MutableList<User>
+     private lateinit var recyclerView: RecyclerView
+     private lateinit var manager: RecyclerView.LayoutManager
+     private lateinit var myAdapter: UserAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val serviceGenerator = Service.buildService(API::class.java)
         val call = serviceGenerator.getUser()
-
+        manager = LinearLayoutManager(this)
         val recyclerView = findViewById<RecyclerView>(R.id.contactsRV)
 
         // Getting response from the API
@@ -32,11 +38,13 @@ class MainActivity : AppCompatActivity() {
             ) {
                 if(response.isSuccessful){
                     recyclerView.apply{
-                        layoutManager = LinearLayoutManager(this@MainActivity)
-                        adapter = UserAdapter(response.body()!!)
+                            userList = response.body() as MutableList<User>
+                           layoutManager = manager
+                            myAdapter = UserAdapter(userList){index -> deleteItem(index)}
+                            adapter=myAdapter
+                           myAdapter.notifyDataSetChanged()
                     }
 
-                    //Log.e("success", response.body().toString())
                 }
             }
 
@@ -49,4 +57,11 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    fun deleteItem(index: Int){
+        if(userList.get(index).status.equals("inactive"))
+            userList.removeAt(index)
+            myAdapter.setItems(userList)
+    }
+
 }
