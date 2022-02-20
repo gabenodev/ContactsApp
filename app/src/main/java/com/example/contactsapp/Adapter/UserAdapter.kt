@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contactsapp.Model.User
 import com.example.contactsapp.R
@@ -51,10 +52,13 @@ class UserAdapter(val User: MutableList<User>): RecyclerView.Adapter<UserAdapter
 
         fun bindView(User: User){
                 name.text = User.name
+             //   val randomNumber: Int = avatarList[Random.nextInt(0,avatarList.size-1)]
+             //   User.image = randomNumber
             if(User.id!! % 2 == 1){
-                profileIcon.setImageResource(avatarList[Random.nextInt(0,avatarList.size-1)])
-
-            } else {
+                profileIcon.setImageResource(User.image!!)
+                //firstInitial.isGone = true
+                //secondIntial.isGone = true
+            } else if(User.id % 2 == 0){
                 profileIcon.setImageResource(avatarList[5])
                 if(User.name?.contains(".")==false) {
                     firstInitial.text = User.name.subSequence(0, 1)
@@ -64,6 +68,8 @@ class UserAdapter(val User: MutableList<User>): RecyclerView.Adapter<UserAdapter
                     secondIntial.text = User.name?.get(secondSpaceIndex(User.name)+1).toString()
                 }
 
+            } else {
+                name.text = "Failed"
             }
 
         }
@@ -71,6 +77,7 @@ class UserAdapter(val User: MutableList<User>): RecyclerView.Adapter<UserAdapter
     }
 
 
+    // Adapter basic functions
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_contact,parent,false)
         return UserViewHolder(view, mListener)
@@ -94,6 +101,7 @@ class UserAdapter(val User: MutableList<User>): RecyclerView.Adapter<UserAdapter
         return User.size
     }
 
+/*
      fun removeItem(position: Int){
        // userList.removeAt(position)
 
@@ -106,6 +114,7 @@ class UserAdapter(val User: MutableList<User>): RecyclerView.Adapter<UserAdapter
        // userList = item
        // notifyDataSetChanged()
     }
+*/
 
     fun spaceIndex(name: String): Int{
         var result : Int = 0

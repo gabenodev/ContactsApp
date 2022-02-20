@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/postTitle"
+        android:text="Post Title"
+        android:textColor="@color/white"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:textSize="@dimen/_20sdp">
+
+    </TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/postBody"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        android:text="Repellendus cursus surgo. Antepono subvenio defessus. Aduro collum inflammatio. Suus voluptatem asperiores. Accendo abbas abduco. Denuncio campana quia. Alias ocer admoneo. Torrens porro aqua. Conventus vestigium abscido. Accedo ago ulciscor. Suffoco eius torqueo. Velum soleo causa. Atqui animadverto casso. Temptatio tricesimus sodalitas. Absconditus careo auctor. Ambitus suspendo angustus.">
+
+    </TextView>
+
+</LinearLayout>
