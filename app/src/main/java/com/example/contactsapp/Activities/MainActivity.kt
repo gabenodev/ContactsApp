@@ -3,8 +3,6 @@ package com.example.contactsapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.contactsapp.Adapter.UserAdapter
 import com.example.contactsapp.Model.User
 import com.example.contactsapp.Services.API
-import com.example.contactsapp.Services.Service
+import com.example.contactsapp.Services.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val serviceGenerator = Service.buildService(API::class.java)
+        val serviceGenerator = RetrofitService.buildService(API::class.java)
         val call = serviceGenerator.getUser()
         manager = LinearLayoutManager(this)
         val recyclerView = findViewById<RecyclerView>(R.id.contactsRV)

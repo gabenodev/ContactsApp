@@ -5,8 +5,17 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.contactsapp.Model.Post
+import com.example.contactsapp.Services.API
+import com.example.contactsapp.Services.RetrofitService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class UserProfileActivity : AppCompatActivity() {
+
+    var userPosts : MutableList<Post>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
@@ -16,10 +25,35 @@ class UserProfileActivity : AppCompatActivity() {
         val profileIcon: ImageView = findViewById(R.id.profileAvatar)
         val firstInitial: TextView = findViewById(R.id.fInitial)
         val secondInitial: TextView = findViewById(R.id.sInitial)
-        val id: Int = intent.getIntExtra("id",1)
-        Log.e("id", "The id of the user given to me is " + id.toString())
-
+        val userId: Int = intent.getIntExtra("id",1)
+        //Log.e("id", "The id of the user given to me is " + id.toString())
         val image: Int = intent.getIntExtra("image",R.drawable.initials_bg)
+
+        //Setting up Retrofit
+        val serviceGenerator = RetrofitService.buildService(API::class.java)
+        Log.e("ID", userId.toString())
+        val call = serviceGenerator.getPost(userId)
+
+        call.enqueue(object: Callback<MutableList<Post>>{
+            override fun onResponse(
+                call: Call<MutableList<Post>>,
+                response: Response<MutableList<Post>>
+            ) {
+                if(response.isSuccessful){
+                        userPosts = response.body() as MutableList<Post>
+                    Log.e("succes", response.message())
+                }
+            }
+
+            override fun onFailure(call: Call<MutableList<Post>>, t: Throwable) {
+                t.printStackTrace()
+                Log.e("error" , t.message.toString())
+            }
+
+        })
+
+        Log.e("DEBUG MESSAG", "THIS PERSON HAS..." + (userPosts?.size))
+
 
         name.text = intent.getStringExtra("name")
         email.text = intent.getStringExtra("email")
@@ -27,7 +61,7 @@ class UserProfileActivity : AppCompatActivity() {
 
         val nameToString: String = name.text.toString()
 
-        if(id % 2 == 0) {
+        if(userId % 2 == 0) {
             if (!nameToString.contains(".")) {
                 firstInitial.text = nameToString.subSequence(0, 1)
                 secondInitial.text = nameToString[spaceIndex(nameToString) + 1].toString()

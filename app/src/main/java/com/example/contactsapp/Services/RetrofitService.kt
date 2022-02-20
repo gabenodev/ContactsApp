@@ -3,7 +3,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object Service {
+object RetrofitService {
     private val server = OkHttpClient.Builder().build();
 
     private val retrofitBuilder = Retrofit.Builder()
