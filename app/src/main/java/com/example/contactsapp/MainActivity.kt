@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
                         intent.putExtra("name",userListActive[index].name)
                         intent.putExtra("email",userListActive[index].email)
                         intent.putExtra("image",userListActive[index].image)
+                        intent.putExtra("id",userListActive[index].id)
                         startActivity(intent)
 
                     }

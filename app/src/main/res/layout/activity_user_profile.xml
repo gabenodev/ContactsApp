@@ -19,14 +19,55 @@
 
     </TextView>
 
-    <ImageView
-        android:id="@+id/profileAvatar"
-        android:layout_width="@dimen/_50sdp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_gravity="center">
+        android:layout_marginTop="@dimen/_15sdp">
 
-    </ImageView>
+        <ImageView
+            android:id="@+id/profileAvatar"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/initials_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/fInitial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/profileAvatar"
+            app:layout_constraintEnd_toEndOf="@+id/profileAvatar"
+            app:layout_constraintHorizontal_bias="0.296"
+            app:layout_constraintStart_toStartOf="@+id/profileAvatar"
+            app:layout_constraintTop_toTopOf="@+id/profileAvatar"
+            app:layout_constraintVertical_bias="0.512">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/sInitial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/profileAvatar"
+            app:layout_constraintEnd_toEndOf="@+id/profileAvatar"
+            app:layout_constraintHorizontal_bias="0.673"
+            app:layout_constraintStart_toStartOf="@+id/profileAvatar"
+            app:layout_constraintTop_toTopOf="@+id/profileAvatar"
+            app:layout_constraintVertical_bias="0.512">
+
+        </TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/userName"
