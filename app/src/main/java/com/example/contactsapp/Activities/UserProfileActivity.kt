@@ -46,7 +46,7 @@ class UserProfileActivity : AppCompatActivity() {
                 response: Response<MutableList<Post>>
             ) {
                 if(response.isSuccessful){
-                        userPosts = response.body() as MutableList<Post>
+                    userPosts = response.body() as MutableList<Post>
 
                     recyclerView.apply{
                         layoutManager = LinearLayoutManager(this@UserProfileActivity)
