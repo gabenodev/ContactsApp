@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
 
                             layoutManager = manager
                            myAdapter = UserAdapter(userListActive)
-                           //Log.e("MESSAGE2" ,"UserAdapter has... items "+  UserAdapter(userListActive).itemCount )
                             adapter = myAdapter
 
                     }
@@ -69,7 +68,6 @@ class MainActivity : AppCompatActivity() {
                 myAdapter.setOnItemClickListener(object : UserAdapter.onItemClickListener{
                     override fun onItemClick(index: Int) {
 
-                        Toast.makeText(this@MainActivity,"You clicked the user with the index $index " , Toast.LENGTH_LONG).show()
                         intent = Intent(this@MainActivity, UserProfileActivity::class.java)
                         intent.putExtra("name",userListActive[index].name)
                         intent.putExtra("email",userListActive[index].email)

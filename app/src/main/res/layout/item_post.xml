@@ -12,7 +12,7 @@
         android:text="Post Title"
         android:textColor="@color/white"
         android:layout_marginLeft="@dimen/_20sdp"
-        android:textSize="@dimen/_20sdp">
+        android:textSize="@dimen/_15sdp">
 
     </TextView>
 
@@ -29,7 +29,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_20sdp"
         android:textColor="@color/white"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_12sdp"
         android:text="Repellendus cursus surgo. Antepono subvenio defessus. Aduro collum inflammatio. Suus voluptatem asperiores. Accendo abbas abduco. Denuncio campana quia. Alias ocer admoneo. Torrens porro aqua. Conventus vestigium abscido. Accedo ago ulciscor. Suffoco eius torqueo. Velum soleo causa. Atqui animadverto casso. Temptatio tricesimus sodalitas. Absconditus careo auctor. Ambitus suspendo angustus.">
 
     </TextView>
