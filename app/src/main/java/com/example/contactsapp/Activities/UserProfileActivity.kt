@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.contactsapp.Adapter.PostAdapter
 import com.example.contactsapp.Model.Post
 import com.example.contactsapp.Services.API
 import com.example.contactsapp.Services.RetrofitService
@@ -29,6 +32,9 @@ class UserProfileActivity : AppCompatActivity() {
         //Log.e("id", "The id of the user given to me is " + id.toString())
         val image: Int = intent.getIntExtra("image",R.drawable.initials_bg)
 
+        //Init the Recycler View
+        val recyclerView = findViewById<RecyclerView>(R.id.postsRV)
+
         //Setting up Retrofit
         val serviceGenerator = RetrofitService.buildService(API::class.java)
         Log.e("ID", userId.toString())
@@ -41,7 +47,11 @@ class UserProfileActivity : AppCompatActivity() {
             ) {
                 if(response.isSuccessful){
                         userPosts = response.body() as MutableList<Post>
-                    Log.e("succes", response.message())
+
+                    recyclerView.apply{
+                        layoutManager = LinearLayoutManager(this@UserProfileActivity)
+                        adapter = PostAdapter(userPosts!!)
+                    }
                 }
             }
 

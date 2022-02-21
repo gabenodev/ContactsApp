@@ -58,18 +58,24 @@ class UserAdapter(val User: MutableList<User>): RecyclerView.Adapter<UserAdapter
                 profileIcon.setImageResource(User.image!!)
                 //firstInitial.isGone = true
                 //secondIntial.isGone = true
-            } else if(User.id % 2 == 0){
+            } else {
                 profileIcon.setImageResource(avatarList[5])
+                firstInitial.text = User.name?.subSequence(0, 1)
+                secondIntial.text = User.name?.get(spaceIndex(User.name) + 1).toString()
+
+                /* Apparently this produces a weird visual bug whitin the app
+                We'll skip this for a time...
+
                 if(User.name?.contains(".")==false) {
-                    firstInitial.text = User.name.subSequence(0, 1)
-                    secondIntial.text = User.name[spaceIndex(User.name) + 1].toString()
+                //
+                //
                 } else {
-                    firstInitial.text = User.name?.get(spaceIndex(User.name)+1).toString()
-                    secondIntial.text = User.name?.get(secondSpaceIndex(User.name)+1).toString()
+               //     firstInitial.text = User.name?.get(spaceIndex(User.name)+1).toString()
+                //    secondIntial.text = User.name?.get(secondSpaceIndex(User.name)+1).toString()
                 }
 
-            } else {
-                name.text = "Failed"
+                 */
+
             }
 
         }
