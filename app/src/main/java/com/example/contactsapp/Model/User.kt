@@ -7,5 +7,6 @@ data class User (
     val email: String? = null,
     val gender: String? = null,
     val status: String? = null,
-    var image: Int? = null
+    var image: Int? = null,
+
         )

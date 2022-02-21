@@ -46,15 +46,18 @@ class MainActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     userList = response.body() as MutableList<User>
                     for(i in 0 until userList.size){
-                        if(userList.get(i).status.equals("active")) {
-                            userListActive.add(userList.get(i))
+                        if(userList[i].status.equals("active")) {
+                            userListActive.add(userList[i])
                         }
                     }
 
-                    for(i in 0 until userListActive.size){
-                        if(userListActive[i].id!! % 2 == 1)
-                        userListActive[i].image = avatarList[Random.nextInt(0,avatarList.size-1)]
+
+                    for(i in 0 until userListActive.size) {
+                        if (userListActive[i].id!! % 2 == 1){
+                            userListActive[i].image = avatarList[Random.nextInt(0, avatarList.size - 1)]
+                        }
                     }
+
 
                     Log.e("MESSAGE", "THE LAST PERSON ACTIVE IN API IS... " + userListActive.get(userListActive.size-1).toString())
                         recyclerView.apply {
@@ -73,6 +76,7 @@ class MainActivity : AppCompatActivity() {
                         intent.putExtra("email",userListActive[index].email)
                         intent.putExtra("image",userListActive[index].image)
                         intent.putExtra("id",userListActive[index].id)
+
                         startActivity(intent)
 
                     }
@@ -93,15 +97,4 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-    /*
-    fun deleteItem(index: Int){
-        if(userList.get(index).status.equals("inactive"))
-            userList.removeAt(index)
-            myAdapter.setItems(userList)
-    }
-
-     */
-
-
 }

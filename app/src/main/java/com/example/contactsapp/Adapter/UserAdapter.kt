@@ -59,14 +59,14 @@ class UserAdapter(val User: MutableList<User>): RecyclerView.Adapter<UserAdapter
             } else {
                 profileIcon.setImageResource(avatarList[5])
 
-                if(User.name?.contains(".")==false) {
+                if(User.name?.contains(".")== false) {
 
-                    firstInitial.text = User.name?.subSequence(0, 1)
-                    secondIntial.text = User.name?.get(spaceIndex(User.name) + 1).toString()
+                    firstInitial.text = User.name.subSequence(0, 1)
+                    secondIntial.text = User.name[spaceIndex(User.name) + 1].toString()
 
                 } else {
-                    firstInitial.text = User.name?.get(spaceIndex(User.name)+1).toString()
-                    secondIntial.text = User.name?.get(secondSpaceIndex(User.name)+1).toString()
+                    firstInitial.text = User.name!![spaceIndex(User.name)+1].toString()
+                    secondIntial.text = User.name[secondSpaceIndex(User.name)+1].toString()
                 }
 
 
@@ -100,6 +100,12 @@ class UserAdapter(val User: MutableList<User>): RecyclerView.Adapter<UserAdapter
 
     override fun getItemCount(): Int {
         return User.size
+    }
+
+
+    // THIS FUNCTION ACTUALLY SAVED MY LIFE WITH THE DAMN VISUAL BUG...
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 
 /*
