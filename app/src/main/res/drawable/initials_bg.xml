@@ -3,6 +3,9 @@
     <item>
         <shape android:shape="oval">
             <solid android:color="@color/white"/>
+            <stroke android:color="@color/black"
+                android:width="@dimen/_3sdp">
+            </stroke>
             <size android:width="@dimen/_120sdp" android:height="@dimen/_120sdp"/>
         </shape>
     </item>

@@ -1,5 +1,6 @@
 package com.example.contactsapp.Adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +19,11 @@ class PostAdapter (val Post: MutableList<Post>) : RecyclerView.Adapter<PostAdapt
         private val postBody: TextView = itemView.findViewById(R.id.postBody)
 
         fun bindView(Post: Post){
-            postTitle.text = Post.title
-            postBody.text = Post.body
+
+                postTitle.text = Post.title
+                postBody.text = Post.body
+                Log.e("pf...", itemCount.toString())
+
         }
 
     }
