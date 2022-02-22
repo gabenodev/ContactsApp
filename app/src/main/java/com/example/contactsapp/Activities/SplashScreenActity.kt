@@ -1,5 +1,6 @@
 package com.example.contactsapp.Activities
 
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -42,7 +43,7 @@ class SplashScreenActity : AppCompatActivity() {
 
         handler.postDelayed({
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
             finish()
         },4000)
 

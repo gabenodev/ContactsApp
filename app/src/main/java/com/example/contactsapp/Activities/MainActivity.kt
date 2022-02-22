@@ -1,5 +1,7 @@
 package com.example.contactsapp
 
+import android.app.ActivityOptions
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -58,8 +60,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
 
-
-                    Log.e("MESSAGE", "THE LAST PERSON ACTIVE IN API IS... " + userListActive.get(userListActive.size-1).toString())
                         recyclerView.apply {
 
                             layoutManager = manager
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                         intent.putExtra("image",userListActive[index].image)
                         intent.putExtra("id",userListActive[index].id)
 
-                        startActivity(intent)
+                        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this@MainActivity).toBundle())
 
                     }
 
@@ -87,14 +87,15 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<MutableList<User>>, t: Throwable) {
-                t.printStackTrace()
-                Log.e("error" , t.message.toString())
+               // t.printStackTrace()
+              //  Log.e("error" , t.message.toString())
+                val alertDialogBuilder = AlertDialog.Builder(this@MainActivity)
+                alertDialogBuilder.setTitle("Something went wrong...")
+                alertDialogBuilder.setMessage("Error connecting to the server...")
+                alertDialogBuilder.show()
             }
 
         })
-
-
-
 
     }
 }

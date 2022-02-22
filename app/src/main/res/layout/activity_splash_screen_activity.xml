@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.462">
+        app:layout_constraintVertical_bias="0.41">
 
     </ImageView>
 
@@ -24,17 +24,17 @@
         android:id="@+id/tvAnim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Welcome"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Hello"
         android:textColor="@color/white"
         android:textSize="@dimen/_40sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.676">
+        app:layout_constraintVertical_bias="0.726">
 
     </TextView>
 

@@ -1,10 +1,13 @@
 package com.example.contactsapp
 
+import android.app.ActivityOptions
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contactsapp.Adapter.PostAdapter
@@ -31,7 +34,8 @@ class UserProfileActivity : AppCompatActivity() {
         val userId: Int = intent.getIntExtra("id",1)
         //Log.e("id", "The id of the user given to me is " + id.toString())
         val image: Int = intent.getIntExtra("image",R.drawable.initials_bg)
-
+        val noPosts:TextView = findViewById(R.id.noPosts)
+        val backButton: ImageView = findViewById(R.id.backButton)
         //Init the Recycler View
         val recyclerView = findViewById<RecyclerView>(R.id.postsRV)
 
@@ -48,9 +52,13 @@ class UserProfileActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     userPosts = response.body() as MutableList<Post>
 
+                    if(userPosts!!.size > 0){
                     recyclerView.apply{
                         layoutManager = LinearLayoutManager(this@UserProfileActivity)
                         adapter = PostAdapter(userPosts!!)
+                    }
+                    } else {
+                        noPosts.isVisible = true
                     }
                 }
             }
@@ -79,6 +87,11 @@ class UserProfileActivity : AppCompatActivity() {
                 firstInitial.text = nameToString[spaceIndex(nameToString) + 1].toString()
                 secondInitial.text = nameToString[secondSpaceIndex(nameToString) + 1].toString()
             }
+        }
+
+        backButton.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this@UserProfileActivity).toBundle())
         }
 
     }
