@@ -1,2 +1,2 @@
 # ContactsApp
- A contact aplication in Kotlin which consumes an API to retrieve user data.
+ A contact aplication in Kotlin which consumes an API to retrieve user data and his posts.
