@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- In -->
+    <translate
+        android:startOffset ="300"
+        android:fromYDelta = "100%"
+        android:toYDelta="0%"
+        android:duration="1000">
+        <!-- android:duration="2000" -->
+
+    </translate>
+
+    <alpha
+        android:startOffset="2000"
+        android:fromAlpha="0"
+        android:toAlpha="1">
+<!-- android:duration="1000" -->
+    </alpha>
+
+    <!-- Out -->
+
+    <translate
+        android:duration="500"
+        android:startOffset ="2000"
+        android:fromYDelta = "0%"
+        android:toYDelta="100%">
+
+    </translate>
+
+    <alpha
+        android:startOffset="11000"
+        android:fromAlpha="1"
+        android:toAlpha="0"
+        android:duration="1000">
+        <!-- android:duration="2000" -->
+
+    </alpha>
+
+</set>

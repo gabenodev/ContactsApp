@@ -11,7 +11,7 @@ import com.example.contactsapp.R
 
 class PostAdapter (val Post: MutableList<Post>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>(){
 
-
+    //private val noPost: String = "No posts"
 
     //Inner Class
     inner class PostViewHolder(itemView: View): RecyclerView.ViewHolder (itemView){
